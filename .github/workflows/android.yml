@@ -24,15 +24,25 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 'current'
+
+      - name: Generate Gradle Wrapper if missing
+        run: |
+          if [ ! -f ./gradlew ]; then
+            gradle wrapper --no-daemon
+          fi
 
       - name: Make Gradle Wrapper Executable
         run: chmod +x ./gradlew
-        continue-on-error: true
 
-      - name: Create fallback .env file if missing
+      - name: Prepare Debug Keystore and Environment
         run: |
           if [ ! -f .env ]; then
             touch .env
+          fi
+          if [ -f debug.keystore.base64 ]; then
+            base64 --decode debug.keystore.base64 > debug.keystore
           fi
 
       - name: Run Local Unit & Robolectric Tests
