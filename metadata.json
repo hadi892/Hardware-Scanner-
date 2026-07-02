@@ -1,0 +1,6 @@
+{
+  "name": "Hardware Capability Analyzer Ultimate",
+  "description": "Comprehensive legally accessible hardware capability analysis, scanner for system info, codecs, HAL, Qualcomm components, hidden SDR/FM risk metrics, and professional exportable reports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
